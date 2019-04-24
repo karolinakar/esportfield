@@ -9,7 +9,17 @@ $(document).ready(function () {
     }).addTo(map)
 
     map.on('click', function(e){
-        var marker = new L.marker(e.latlng).addTo(map);
+        var marker = new L.marker(e.latlng, {draggable: true}).addTo(map).on('dragend', function() {
+
+            var coord = String(this.getLatLng()).split(',');
+
+            var lat = coord[0].split('(');
+
+            var lng = coord[1].split(')');
+
+            this.bindPopup("Moved to: " + lat[1] + ", " + lng[0] + ".");
+        });
+
     });
 
 });
