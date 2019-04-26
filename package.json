@@ -1,0 +1,25 @@
+{
+  "name": "esportfield",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karolinakar/esportfield.git"
+  },
+  "author": "Karolina Karczewska",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karolinakar/esportfield/issues"
+  },
+  "homepage": "https://github.com/karolinakar/esportfield#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-table": "^1.14.2",
+    "jquery": "^3.3.1",
+    "leaflet": "^1.4.0",
+    "popper.js": "^1.14.7"
+  }
+}

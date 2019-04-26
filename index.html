@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>esportfield</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-table/dist/bootstrap-table.min.css">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/leaflet/dist/leaflet.js"></script>
+    <script src="node_modules/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="script.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="accordion">
+        <div class="card">
+            <div class="card-header" id="headingMap"  type="button" data-toggle="collapse" data-target="#collapseMap" aria-expanded="true" aria-controls="collapseMap">
+                <h2 class="mb-0">
+                    <header>
+                        Mapa
+                    </header>
+                </h2>
+            </div>
+
+            <div id="collapseMap" class="collapse show" aria-labelledby="headingMap">
+                <div class="card-body">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTable" type="button" data-toggle="collapse" data-target="#collapseTable" aria-expanded="false" aria-controls="collapseTable">
+                <h2 class="mb-0">
+                    <header>
+                        Tabela znaczników
+                    </header>
+                </h2>
+            </div>
+            <div id="collapseTable" class="collapse" aria-labelledby="headingTable">
+                <div class="card-body">
+                    <table id="table">
+                        <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="lat">Szerokość geograficzna</th>
+                            <th data-field="lng">Długość geograficzna</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
