@@ -10,7 +10,5 @@
 * Leaflet
 
 ## Setup:
-* npm install  
-* Open index.html in the browser
 
 
