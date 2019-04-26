@@ -9,6 +9,6 @@
 * JQuery
 * Leaflet
 
-## Setup:
+
 
 
