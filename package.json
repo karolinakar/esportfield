@@ -17,6 +17,7 @@
   "homepage": "https://github.com/karolinakar/esportfield#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "bootstrap-table": "^1.14.2",
     "jquery": "^3.3.1",
     "leaflet": "^1.4.0",
     "popper.js": "^1.14.7"

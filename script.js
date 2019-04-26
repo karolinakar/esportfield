@@ -1,3 +1,5 @@
+var markers = [];
+
 $(document).ready(function () {
     var map = L.map('map').setView([50.301, 18.654], 13);
 
@@ -6,21 +8,44 @@ $(document).ready(function () {
         maxZoom: 18,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1Ijoia2Fyb2xpbmFrYXIiLCJhIjoiY2p1djFlNmR6MG16aTQzbnZ0cW1sN2V2ZCJ9.j1JiL0R3chWl5W5lug5lCg'
-    }).addTo(map)
+    }).addTo(map);
 
-    map.on('click', function(e){
-        var marker = new L.marker(e.latlng, {draggable: true}).addTo(map).on('dragend', function() {
+    map.on('click', function (e) {
+        var marker = new L.marker(e.latlng, {draggable: true})
+            .addTo(map)
+            .on('dragend', function () {
+                zaktualizowanie(this._leaflet_id, this._latlng.lat, this._latlng.lng);
+            });
 
-            var coord = String(this.getLatLng()).split(',');
-
-            var lat = coord[0].split('(');
-
-            var lng = coord[1].split(')');
-
-            this.bindPopup("Moved to: " + lat[1] + ", " + lng[0] + ".");
-        });
-
+        dodanie(marker._leaflet_id, marker._latlng.lat, marker._latlng.lng);
     });
 
+
+    $('#table').bootstrapTable({
+        data: markers
+    });
 });
+
+function dodanie(id, lat, lng) {
+    markers.push({
+        id: id,
+        lat: lat,
+        lng: lng
+    });
+    refreshTable();
+}
+
+function zaktualizowanie(id, lat, lng) {
+    for (var i = 0; i < markers.length; i++) {
+        if (markers[i].id === id) {
+            markers[i].lat = lat;
+            markers[i].lng = lng;
+        }
+    }
+    refreshTable();
+}
+
+function refreshTable() {
+    $('#table').bootstrapTable('load', markers);
+}
 
