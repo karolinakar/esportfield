@@ -1,6 +1,11 @@
 var markers = [];
 
 $(document).ready(function () {
+    initMap();
+    initTable();
+});
+
+function initMap() {
     var map = L.map('map').setView([50.301, 18.654], 13);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -10,23 +15,28 @@ $(document).ready(function () {
         accessToken: 'pk.eyJ1Ijoia2Fyb2xpbmFrYXIiLCJhIjoiY2p1djFlNmR6MG16aTQzbnZ0cW1sN2V2ZCJ9.j1JiL0R3chWl5W5lug5lCg'
     }).addTo(map);
 
+    registerClickHandler(map);
+}
+
+function registerClickHandler(map) {
     map.on('click', function (e) {
         var marker = new L.marker(e.latlng, {draggable: true})
             .addTo(map)
             .on('dragend', function () {
-                zaktualizowanie(this._leaflet_id, this._latlng.lat, this._latlng.lng);
+                updateMarker(this._leaflet_id, this._latlng.lat, this._latlng.lng);
             });
 
-        dodanie(marker._leaflet_id, marker._latlng.lat, marker._latlng.lng);
+        addMarker(marker._leaflet_id, marker._latlng.lat, marker._latlng.lng);
     });
+}
 
-
+function initTable() {
     $('#table').bootstrapTable({
         data: markers
     });
-});
+}
 
-function dodanie(id, lat, lng) {
+function addMarker(id, lat, lng) {
     markers.push({
         id: id,
         lat: lat,
@@ -35,7 +45,7 @@ function dodanie(id, lat, lng) {
     refreshTable();
 }
 
-function zaktualizowanie(id, lat, lng) {
+function updateMarker(id, lat, lng) {
     for (var i = 0; i < markers.length; i++) {
         if (markers[i].id === id) {
             markers[i].lat = lat;
